@@ -3,18 +3,16 @@ import mongoose, { Schema } from "mongoose";
 export interface IMember {
   code: string;
   name: string;
-  borrowedBooks: unknown;
+  borrowedBooks: Schema.Types.ObjectId[];
 }
 
 const memberSchema = new Schema<IMember>({
   code: { type: String, required: true, unique: true },
   name: { type: String, required: true },
   borrowedBooks: {
-    type: {
-      type: [Schema.Types.ObjectId],
-      ref: "Book",
-      default: [],
-    },
+    type: [Schema.Types.ObjectId],
+    ref: "Book",
+    default: [],
   },
 });
 
