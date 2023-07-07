@@ -3,7 +3,7 @@ import Repository from "../repository/repository";
 import Dto from "../dto/dto";
 
 export default class MemberController {
-  static async getAllMembers(req: Request, res: Response) {
+  static async getAllMembers(_req: Request, res: Response) {
     try {
       const members = await Repository.MemberRepository.getRawDataMembers();
 

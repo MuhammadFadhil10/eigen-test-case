@@ -1,12 +1,11 @@
-import Book from "../entity/book.entity";
+import Controller from "../controller/controller";
 import express from "express";
 
 const router = express.Router();
 
-router.get("/books", async (_req, res) => {
-  const books = await Book.find();
+const { BookController } = Controller;
 
-  return res.status(200).json({ data: books });
-});
+router.get("/books/:memberId", BookController.getAllBooks);
+router.post("/book/borrow", BookController.borrowBooks);
 
 export default router;
